@@ -1,11 +1,11 @@
 # manifests/target.pp
 
-class nagios::target {
+class nagios::target( $template = 'linux-server', $ip = $fqdn ) {
 
     @@nagios_host { "${fqdn}":
-        address => $ipaddress,
+        address => $ip,
         alias => $hostname,
-        use => 'generic-host',
+        use => $template,
     }
 
     if ($nagios_parents != '') {

@@ -15,56 +15,56 @@ class nagios::base {
     }
 
     # this file should contain all the nagios_puppet-paths:
-    file { 'nagios_main_cfg':
-            path => "${nagios::defaults::vars::int_nagios_cfgdir}/nagios.cfg",
-            source => [ "puppet:///modules/site-nagios/configs/${fqdn}/nagios.cfg",
-                        "puppet:///modules/site-nagios/configs/${::operatingsystem}/nagios.cfg",
-                        "puppet:///modules/site-nagios/configs/nagios.cfg",
-                        "puppet:///modules/nagios/configs/${::operatingsystem}/nagios.cfg",
-                        "puppet:///modules/nagios/configs/nagios.cfg" ],
-            notify => Service['nagios'],
-            mode => 0644, owner => root, group => root;
-    }    
+    #file { 'nagios_main_cfg':
+    #        path => "${nagios::defaults::vars::int_nagios_cfgdir}/nagios.cfg",
+    #        source => [ "puppet:///modules/site-nagios/configs/${fqdn}/nagios.cfg",
+    #                    "puppet:///modules/site-nagios/configs/${::operatingsystem}/nagios.cfg",
+    #                    "puppet:///modules/site-nagios/configs/nagios.cfg",
+    #                    "puppet:///modules/nagios/configs/${::operatingsystem}/nagios.cfg",
+    #                    "puppet:///modules/nagios/configs/nagios.cfg" ],
+    #        notify => Service['nagios'],
+    #        mode => 0644, owner => root, group => root;
+    #}    
 
-    file { 'nagios_cgi_cfg':
-        path => "${nagios::defaults::vars::int_nagios_cfgdir}/cgi.cfg",
-        source => [ "puppet:///modules/site-nagios/configs/${fqdn}/cgi.cfg",
-                    "puppet:///modules/site-nagios/configs/${::operatingsystem}/cgi.cfg",
-                    "puppet:///modules/site-nagios/configs/cgi.cfg",
-                    "puppet:///modules/nagios/configs/${::operatingsystem}/cgi.cfg",
-                    "puppet:///modules/nagios/configs/cgi.cfg" ],
-        mode => '0644', owner => 'root', group => 0,
-        notify => Service['apache'],
-    }
+    #file { 'nagios_cgi_cfg':
+    #    path => "${nagios::defaults::vars::int_nagios_cfgdir}/cgi.cfg",
+    #    source => [ "puppet:///modules/site-nagios/configs/${fqdn}/cgi.cfg",
+    #                "puppet:///modules/site-nagios/configs/${::operatingsystem}/cgi.cfg",
+    #                "puppet:///modules/site-nagios/configs/cgi.cfg",
+    #                "puppet:///modules/nagios/configs/${::operatingsystem}/cgi.cfg",
+    #                "puppet:///modules/nagios/configs/cgi.cfg" ],
+    #    mode => '0644', owner => 'root', group => 0,
+    #    notify => Service['httpd'],
+    #}
 
-    file { 'nagios_htpasswd':
-        path => "${nagios::defaults::vars::int_nagios_cfgdir}/htpasswd.users",
-        source => [ "puppet:///modules/site-nagios/htpasswd.users",
-                    "puppet:///modules/nagios/htpasswd.users" ],
-        mode => 0640, owner => root, group => apache;
-    }
+    #file { 'nagios_htpasswd':
+    #    path => "${nagios::defaults::vars::int_nagios_cfgdir}/htpasswd.users",
+    #    source => [ "puppet:///modules/site-nagios/htpasswd.users",
+    #                "puppet:///modules/nagios/htpasswd.users" ],
+    #    mode => 0640, owner => root, group => apache;
+    #}
 
     file { 'nagios_private':
         path => "${nagios::defaults::vars::int_nagios_cfgdir}/private/",
         ensure => directory,
-        purge => true,
+        #purge => true,
         recurse => true,
         notify => Service['nagios'],
         mode => '0750', owner => root, group => nagios;
     }
 
-    file { 'nagios_private_resource_cfg':
-        path => "${nagios::defaults::vars::int_nagios_cfgdir}/private/resource.cfg",
-        source => [ "puppet:///modules/site-nagios/configs/${::operatingsystem}/private/resource.cfg.${::architecture}",
-                    "puppet:///modules/nagios/configs/${::operatingsystem}/private/resource.cfg.${::architecture}" ],
-        notify => Service['nagios'],
-        owner => root, group => nagios, mode => '0640';
-    }
+    #file { 'nagios_private_resource_cfg':
+    #    path => "${nagios::defaults::vars::int_nagios_cfgdir}/private/resource.cfg",
+    #    source => [ "puppet:///modules/site-nagios/configs/${::operatingsystem}/private/resource.cfg.${::architecture}",
+    #                "puppet:///modules/nagios/configs/${::operatingsystem}/private/resource.cfg.${::architecture}" ],
+    #    notify => Service['nagios'],
+    #    owner => root, group => nagios, mode => '0640';
+    #}
 
     file { 'nagios_confd':
         path => "${nagios::defaults::vars::int_nagios_cfgdir}/conf.d/",
         ensure => directory,
-        purge => true,
+        #purge => true,
         recurse => true,
         notify => Service['nagios'],
         mode => '0750', owner => root, group => nagios;
@@ -179,7 +179,7 @@ class nagios::base {
         path => "${nagios::defaults::vars::int_nagios_cfgdir}/",
         ensure => directory,
         recurse => true,
-        purge => true,
+        #purge => true,
         notify => Service['nagios'],
         mode => 0755, owner => root, group => root;
     }

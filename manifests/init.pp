@@ -15,13 +15,17 @@
 #
 
 class nagios {
-    case $nagios_httpd {
-        'absent': { }
-        'lighttpd': { include lighttpd }
-        'apache': { include apache }
-        default: { include apache }
-    }
+    #case $nagios_httpd {
+    #    'absent': { }
+    #    'lighttpd': { include lighttpd }
+    #    'apache': { include apache }
+    #    default: { include apache }
+    #}
     case $::operatingsystem {
+        'Fedora': {
+            $nagios_cfgdir = '/etc/nagios'
+            include nagios::fedora
+        }
         'centos': {
             $nagios_cfgdir = '/etc/nagios'
             include nagios::centos
