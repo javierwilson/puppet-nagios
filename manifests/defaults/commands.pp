@@ -1,5 +1,6 @@
 class nagios::defaults::commands {
 
+  include nagios::command::nrpe
   include nagios::command::smtp
   include nagios::command::imap_pop3
 
