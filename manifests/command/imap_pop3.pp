@@ -5,7 +5,7 @@ class nagios::command::imap_pop3 {
     'check_imap_ssl':
       command_line => '$USER1$/check_simap -H $HOSTADDRESS$';
     'check_imaps':
-      command_line => '$USER1$/check_simaps -H $HOSTADDRESS$';
+      command_line => '$USER1$/check_simap -H $HOSTADDRESS$';
     'check_pop':
       command_line => '$USER1$/check_pop -H $HOSTADDRESS$';
     'check_pops':
