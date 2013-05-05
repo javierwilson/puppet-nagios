@@ -17,6 +17,6 @@ class nagios::command::imap_pop3 {
     'check_pop3s':
       command_line => '$USER1$/check_spop -H $HOSTADDRESS$';
     'check_managesieve':
-      command_line => '$USER1$/check_tcp -H $HOSTADDRESS$ -p 2000';
+      command_line => '$USER1$/check_tcp -H $HOSTADDRESS$ -p 4190';
   }
 }
