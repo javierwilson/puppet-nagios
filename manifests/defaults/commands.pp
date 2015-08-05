@@ -1,6 +1,7 @@
 class nagios::defaults::commands {
 
   include nagios::command::nrpe
+  include nagios::command::dns
   include nagios::command::smtp
   include nagios::command::imap_pop3
 
@@ -118,7 +119,8 @@ class nagios::defaults::commands {
 
         # dnsbl checking
         check_dnsbl:
-          command_line => '$USER1$/check_dnsbl -H $ARG1$';
+          command_line => '$USER1$/check_dnsbl -H $HOSTADDRESS$';
+          #command_line => '$USER1$/check_dnsbl -H $ARG1$';
     }
 
     # notification commands
