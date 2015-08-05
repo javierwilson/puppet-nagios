@@ -10,7 +10,7 @@ class nagios::nrpe {
         }
         default: {
             if $nagios_nrpe_pid_file == '' { $nagios_nrpe_pid_file = '/var/run/nrpe.pid' }
-            if $nagios_plugin_dir == '' { $nagios_plugin_dir = '/usr/lib/nagios/plugins' }
+            if $nagios_plugin_dir == '' { $nagios_plugin_dir = '/usr/lib64/nagios/plugins' }
 
             case $kernel {
                 linux: { include nagios::nrpe::linux }

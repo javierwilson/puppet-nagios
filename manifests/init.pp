@@ -28,7 +28,7 @@ class nagios(
     default: { include ::apache }
   }
   case $::operatingsystem {
-    'centos': {
+    'fedora', 'centos': {
       $cfgdir = '/etc/nagios'
       include nagios::centos
     }
