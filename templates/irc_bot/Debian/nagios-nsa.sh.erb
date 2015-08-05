@@ -2,15 +2,15 @@
 
 ### BEGIN INIT INFO
 # Provides:		nagios-nsa
-# Required-Start:	$remote_fs $syslog $nagios
-# Required-Stop:	$remote_fs $syslog $nagios
+# Required-Start:	$remote_fs $syslog nagios3
+# Required-Stop:	$remote_fs $syslog nagios3
 # Default-Start:	2 3 4 5
 # Default-Stop:		1 6 0
 # Short-Description:	Nagios Simple IRC Agent
 ### END INIT INFO
 
-PIDFILE=<%= nagios_nsa_pidfile %>
-SOCKFILE=<%= nagios_nsa_socket %>
+PIDFILE=<%= scope.lookupvar('nagios::irc_bot::real_nsa_pidfile') %>
+SOCKFILE=<%= scope.lookupvar('nagios::irc_bot::real_nsa_socket') %>
 
 . /lib/lsb/init-functions
 
@@ -51,6 +51,7 @@ cleanup() {
 case $1
 in
         start)
+		cleanup
                 start
                 ;;
         stop)

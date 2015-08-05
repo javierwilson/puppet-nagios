@@ -1,17 +1,22 @@
 # manifests/target.pp
 
-#class nagios::target( $template = 'linux-server', $ip = $fqdn, $contacts = "admins" ) {
-class nagios::target( $template = 'linux-server', $ip = $fqdn, $contacts = "" ) {
+class nagios::target(
+  $parents = 'absent',
+  $address = $::ipaddress,
+  $nagios_alias = $::hostname,
+  $hostgroups = 'absent'
+){
+  @@nagios_host { $::fqdn:
+    address => $address,
+    alias => $nagios_alias,
+    use => 'generic-host',
+  }
 
-    @@nagios_host { "${fqdn}":
-        address => $ip,
-        alias => $hostname,
-        use => $template,
-        contacts => $contacts,
-    }
+  if ($parents != 'absent') {
+    Nagios_host["${::fqdn}"] { parents => $parents }
+  }
 
-    if ($nagios_parents != '') {
-        Nagios_host["${fqdn}"] { parents => $nagios_parents }
-    }
-
+  if ($hostgroups != 'absent') {
+    Nagios_host["${::fqdn}"] { hostgroups => $hostgroups }  
+  }
 }
