@@ -53,15 +53,6 @@ class nagios::base {
         mode => '0750', owner => root, group => nagios;
     }
 
-<<<<<<< HEAD
-    #file { 'nagios_private_resource_cfg':
-    #    path => "${nagios::defaults::vars::int_nagios_cfgdir}/private/resource.cfg",
-    #    source => [ "puppet:///modules/site-nagios/configs/${::operatingsystem}/private/resource.cfg.${::architecture}",
-    #                "puppet:///modules/nagios/configs/${::operatingsystem}/private/resource.cfg.${::architecture}" ],
-    #    notify => Service['nagios'],
-    #    owner => root, group => nagios, mode => '0640';
-    #}
-=======
     file { 'nagios_private_resource_cfg':
         path => "${nagios::defaults::vars::int_cfgdir}/private/resource.cfg",
         source => [ "puppet:///modules/site_nagios/configs/${::operatingsystem}/private/resource.cfg.${::architecture}",
@@ -69,7 +60,6 @@ class nagios::base {
         notify => Service['nagios'],
         owner => root, group => nagios, mode => '0640';
     }
->>>>>>> 9e6c67f271eb0d7f4c09d4246a944a5bf1a29bd2
 
     file { 'nagios_confd':
         path => "${nagios::defaults::vars::int_cfgdir}/conf.d/",
@@ -189,12 +179,8 @@ class nagios::base {
         path => "${nagios::defaults::vars::int_cfgdir}/",
         ensure => directory,
         recurse => true,
-<<<<<<< HEAD
-        #purge => true,
-=======
         purge => true,
         force => true,
->>>>>>> 9e6c67f271eb0d7f4c09d4246a944a5bf1a29bd2
         notify => Service['nagios'],
         mode => 0755, owner => root, group => root;
     }
