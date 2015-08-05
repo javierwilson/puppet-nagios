@@ -14,8 +14,6 @@ FOUND_ADRESS=0
 
 DNSBLlist=`grep -v ^# <<!
 cbl.abuseat.org
-dnsbl.ahbl.org
-ircbl.ahbl.org
 virbl.dnsbl.bit.nl
 blackholes.five-ten-sg.com
 dnsbl.inps.de

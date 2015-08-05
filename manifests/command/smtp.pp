@@ -4,9 +4,11 @@ class nagios::command::smtp {
     default: {
       nagios_command {
         'check_smtp':
-           command_line => '$USER1$/check_smtp -H $ARG1$ -p $ARG2$';
+           command_line => '$USER1$/check_smtp -H $HOSTADDRESS$';
+           #command_line => '$USER1$/check_smtp -H $ARG1$ -p $ARG2$';
         'check_ssmtp':
-           command_line => '$USER1$/check_ssmtp -H $ARG1$ -p $ARG2$ -S';
+           command_line => '$USER1$/check_ssmtp -H $HOSTADDRESS$ -S';
+           #command_line => '$USER1$/check_ssmtp -H $ARG1$ -p $ARG2$ -S';
       }
     }
   }
