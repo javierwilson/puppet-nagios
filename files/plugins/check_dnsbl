@@ -18,9 +18,6 @@ virbl.dnsbl.bit.nl
 blackholes.five-ten-sg.com
 dnsbl.inps.de
 ix.dnsbl.manitu.net
-no-more-funn.moensted.dk
-combined.njabl.org
-dnsbl.njabl.org
 dnsbl.sorbs.net
 bl.spamcannibal.org
 bl.spamcop.net
@@ -31,7 +28,6 @@ dnsbl-1.uceprotect.net
 # dnsbl-2.uceprotect.net
 # dnsbl-3.uceprotect.net
 psbl.surriel.com
-l2.apews.org
 dnsrbl.swinog.ch
 db.wpbl.info
 !`
